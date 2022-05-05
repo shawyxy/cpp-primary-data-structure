@@ -1,0 +1,8 @@
+﻿  Stack.c
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_22_test\22_4_22_test\Stack.h(17,2): warning C4091: “typedef ”: 没有声明变量时忽略“Stack”的左侧
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_22_test\22_4_22_test\Stack.c(10,47): warning C4133: “=”: 从“Stack *”到“STDataType *”的类型不兼容
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_22_test\22_4_22_test\Stack.c(38,18): warning C4133: “=”: 从“Stack *”到“STDataType *”的类型不兼容
+  test.c
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_22_test\22_4_22_test\Stack.h(17,2): warning C4091: “typedef ”: 没有声明变量时忽略“Stack”的左侧
+  正在生成代码...
+  22_4_22_test.vcxproj -> C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_22_test\Debug\22_4_22_test.exe
