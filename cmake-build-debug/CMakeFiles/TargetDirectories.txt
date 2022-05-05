@@ -1,0 +1,3 @@
+/Users/man9o/Code/C_code/primary- data-structure/cmake-build-debug/CMakeFiles/primary__data_structure.dir
+/Users/man9o/Code/C_code/primary- data-structure/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/man9o/Code/C_code/primary- data-structure/cmake-build-debug/CMakeFiles/rebuild_cache.dir
