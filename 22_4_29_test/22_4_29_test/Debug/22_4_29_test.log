@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  test.c
 C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_test\test.c(13,33): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_test\test.c(18,50): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
@@ -30,3 +31,9 @@ C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_
 C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_test\test.c(18,50): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
   22_4_29_test.vcxproj -> C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\Debug\22_4_29_test.exe
 >>>>>>> 374fdf0d10971997db2f875470647e4dbfd1651d
+=======
+﻿  test.c
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_test\test.c(13,33): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\22_4_29_test\test.c(18,50): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  22_4_29_test.vcxproj -> C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\Debug\22_4_29_test.exe
+>>>>>>> 4dd49e50cd8de3769926626e3a4881f8cf27cb7e
