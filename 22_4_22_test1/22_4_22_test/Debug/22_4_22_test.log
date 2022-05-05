@@ -1,0 +1,10 @@
+﻿  Queue.c
+E:\Test1\22_4_22_test\22_4_22_test\Queue.h(13,2): warning C4091: “typedef ”: 没有声明变量时忽略“QueueNode”的左侧
+E:\Test1\22_4_22_test\22_4_22_test\Queue.h(21,2): warning C4091: “typedef ”: 没有声明变量时忽略“Queue”的左侧
+E:\Test1\22_4_22_test\22_4_22_test\Queue.c(116,24): warning C4133: “=”: 从“QueueNode *”到“Queue *”的类型不兼容
+E:\Test1\22_4_22_test\22_4_22_test\Queue.c(112,1): warning C4133: “初始化”: 从“QNode *”到“Queue *”的类型不兼容
+  test.c
+E:\Test1\22_4_22_test\22_4_22_test\Queue.h(13,2): warning C4091: “typedef ”: 没有声明变量时忽略“QueueNode”的左侧
+E:\Test1\22_4_22_test\22_4_22_test\Queue.h(21,2): warning C4091: “typedef ”: 没有声明变量时忽略“Queue”的左侧
+  正在生成代码...
+  22_4_22_test.vcxproj -> E:\Test1\22_4_22_test\Debug\22_4_22_test.exe
