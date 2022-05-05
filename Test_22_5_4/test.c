@@ -59,21 +59,4 @@
 //    }
 //    return NULL;
 //}
-#include <stdio.h>
-#define swap(n) (((n) & 0x55555555) << 1 | ((n) & 0xaaaaaaaa) >> 1)
-int main()
-{
-    int n = 8888;
-    for (int i = 31; i >= 0; i--)
-    {
-        printf("%d", 1 & (n >> i));
-    }
-    printf("\n");
-    int k = swap(n);
-    for (int i = 31; i >= 0; i--)
-    {
-        printf("%d", 1 & (k >> i));
-    }
-    printf("\n");
-    return 0;
-}
+//#include <stdio.h>
