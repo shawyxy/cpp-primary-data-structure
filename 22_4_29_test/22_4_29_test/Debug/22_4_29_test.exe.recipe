@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <ProjectOutputs>
@@ -60,4 +61,16 @@
   <SatelliteDlls />
   <NonRecipeFileRefs />
 >>>>>>> 374fdf0d10971997db2f875470647e4dbfd1651d
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\Administrator\Desktop\Test\primary-data-structure\22_4_29_test\Debug\22_4_29_test.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+>>>>>>> 4dd49e50cd8de3769926626e3a4881f8cf27cb7e
 </Project>
