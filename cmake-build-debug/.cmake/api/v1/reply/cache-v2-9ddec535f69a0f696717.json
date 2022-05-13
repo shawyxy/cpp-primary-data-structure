@@ -203,10 +203,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "UNINITIALIZED",
 			"value" : "/opt/homebrew/Cellar/gcc/11.3.0/bin/gcc-11"
 		},
 		{
