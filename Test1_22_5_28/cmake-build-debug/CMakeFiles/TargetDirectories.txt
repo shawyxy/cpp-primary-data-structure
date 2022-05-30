@@ -1,0 +1,3 @@
+/Users/man9o/Code/C_code/primary- data-structure/Test1_22_5_28/cmake-build-debug/CMakeFiles/Test1_22_5_28.dir
+/Users/man9o/Code/C_code/primary- data-structure/Test1_22_5_28/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/man9o/Code/C_code/primary- data-structure/Test1_22_5_28/cmake-build-debug/CMakeFiles/rebuild_cache.dir
