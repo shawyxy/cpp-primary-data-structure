@@ -12,6 +12,7 @@ void HeapDestory(HP* php)
 {
 	assert(php);
 
+	free(php->a);
 	php->a = NULL;
 	php->capacity = 0;
 	php->size = 0;
