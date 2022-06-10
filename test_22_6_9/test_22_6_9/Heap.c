@@ -3,14 +3,15 @@ void AdjustDown(HeapDataType* a, int size, int parent)
 {
 	//默认左孩子最小
 	int child = parent * 2 + 1;
-	//若右孩子比左孩子更小,则更新child
-	if (a[child + 1] < a[child])
-	{
-		child++;
-	}
+	
 	//终止条件:child下标越界时
 	while (child < size)
 	{
+		//若右孩子比左孩子更小,则更新child
+		if (a[child + 1] < a[child])
+		{
+			child++;
+		}
 		//如果孩子比父亲更小,则交换
 		//记得限制右孩子的下标
 		if (child + 1 < size && a[child] < a[parent])
@@ -21,7 +22,7 @@ void AdjustDown(HeapDataType* a, int size, int parent)
 			parent = child;
 			child = parent * 2 + 1;
 		}
-		else//请注意这个巧妙的break
+		else//注意这个巧妙的break
 		{
 			break;
 		}
@@ -31,12 +32,9 @@ void AdjustUp(HeapDataType* a, int child)
 {
 	int parent = (child - 1) / 2;
 
-	if (a[child + 1] < a[child])
+	while (child > 0)
 	{
-		child++;
-	}
-	while (parent >= 0)
-	{
+		//向上调整需要比较左右孩子吗?
 		if (a[child] < a[parent])
 		{
 			Swap(&(a[child]), &(a[parent]));
@@ -60,7 +58,7 @@ void HeapPush(HP* php, HeapDataType x)
 {
 	assert(php);
 
-	if (php->capacity == php->size)
+	if (php->size == php->capacity)
 	{
 		int newCapacity = php->capacity == 0 ? 4 : php->capacity * 2;
 		HeapDataType* tmp = (HeapDataType*)realloc(php->a, sizeof(HeapDataType) * newCapacity);
@@ -102,7 +100,7 @@ void HeapInit(HP* php)
 {
 	assert(php);
 
-	php->a == NULL;
+	php->a = NULL;
 	php->capacity = 0;
 	php->size = 0;
 }
@@ -111,7 +109,7 @@ void HeapDestory(HP* php)
 	assert(php);
 
 	free(php->a);
-	php->a == NULL;
+	php->a = NULL;
 	php->capacity = 0;
 	php->size = 0;
 }
@@ -130,6 +128,7 @@ int HeapSize(HP* php)
 void HeapPrint(HP* php)
 {
 	assert(php);
+
 	for (int i = 0; i < php->size; ++i)
 	{
 		printf("%d ", php->a[i]);
