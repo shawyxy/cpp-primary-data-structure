@@ -8,7 +8,7 @@ void test1()
 	int a[] = { 27, 15, 19, 18, 28, 34, 65, 49, 25, 37 };
 	for (int i = 0; i < sizeof(a) / sizeof(int); ++i)
 	{
-		//HeapPush(&hp, a[i]);
+		HeapPush(&hp, a[i]);
 	}
 	HeapPrint(&hp);
 
@@ -20,6 +20,7 @@ void test1()
 
 	HeapPop(&hp);
 	HeapPrint(&hp);
+	HeapDestory(&hp);
 }
 int main()
 {
