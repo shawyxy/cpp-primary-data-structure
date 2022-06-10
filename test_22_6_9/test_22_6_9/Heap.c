@@ -32,7 +32,7 @@ void AdjustUp(HeapDataType* a, int child)
 {
 	int parent = (child - 1) / 2;
 
-	while (child > 0)
+	while (parent >= 0)
 	{
 		//向上调整需要比较左右孩子吗?
 		if (a[child] < a[parent])
