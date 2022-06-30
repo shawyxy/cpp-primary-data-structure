@@ -119,7 +119,14 @@ void SelectSort(int* a, int n)
 // å †æ’åº
 void AdjustDwon(int* a, int n, int root);
 void HeapSort(int* a, int n);
+<<<<<<< HEAD
 // å†’æ³¡æ’åº
+=======
+// Ã°ÅİÅÅĞò
+<<<<<<< HEAD
+void BubbleSort(int* a, int n);
+=======
+>>>>>>> df48b74e9304fe2e556a418d01c426ee56928e01
 void BubbleSort(int* a, int n)
 {
 	for (int i = 0; i < n; i++)
@@ -138,8 +145,14 @@ void BubbleSort(int* a, int n)
 			break;
 	}
 }
+<<<<<<< HEAD
 // å¿«é€Ÿæ’åºé€’å½’å®ç°
 // å¿«é€Ÿæ’åºhoareç‰ˆæœ¬
+=======
+>>>>>>> 22f2a112757dfa3f884d1ee5ffe2df31527cd752
+// ¿ìËÙÅÅĞòµİ¹éÊµÏÖ
+// ¿ìËÙÅÅĞòhoare°æ±¾
+>>>>>>> df48b74e9304fe2e556a418d01c426ee56928e01
 int PartSort1(int* a, int begin, int end)
 {
 	if (begin >= end)
