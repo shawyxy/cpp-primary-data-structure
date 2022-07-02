@@ -47,6 +47,11 @@ void SortTest()
 
 	QuickSortTest();
 	
+	int a5[] = { 9,8,7,6,5,4,3,2,1,0 };
+	HeapSort(a5, sizeof(a5) / sizeof(a5[0]));
+	printf("HeapSort->     ");
+	ArrayPrint(a5, sizeof(a5) / sizeof(a5[0]));
+
 }
 
 int main()
