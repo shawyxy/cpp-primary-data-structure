@@ -466,7 +466,7 @@ void _MergeSort(int* a, int begin, int end, int* tmp)
 // 归并排序非递归实现
 void MergeSortNonR(int* a, int n)
 {
-	int* tmp = (int*)malloc(sizeof(int));
+	int* tmp = (int*)malloc(n * sizeof(int));
 	if (tmp == NULL)
 	{
 		printf("malloc fail\n");
@@ -474,16 +474,32 @@ void MergeSortNonR(int* a, int n)
 	}
 
 	int gap = 1;
-	/*while (gap < n)
-	{*/
-		printf("gap=%d->", gap);
-		for (int i = 0; i < n; i += gap)
+	while (gap < n)
+	{
+		for (int i = 0; i < n; i += gap * 2)
 		{
 			int begin1 = i, end1 = i + gap - 1;
-			int begin2 = end1 + 1, end2 = end1 + gap;
+			int begin2 = i + gap, end2 = i + gap * 2 - 1;
 			int j = begin1;
-			int range = end2 - begin1 + 1;
-			printf("[%d,%d] [%d, %d]--", begin1, end1, begin2, end2);
+
+			// 越界-修正边界
+			if (end1 >= n)
+			{
+				end1 = n - 1;
+				// [begin2, end2]修正为不存在区间
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if (begin2 >= n)
+			{
+				// [begin2, end2]修正为不存在区间
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if(end2 >= n)
+			{
+				end2 = n - 1;
+			}
 			while (begin1 <= end1 && begin2 <= end2)
 			{
 				//归并
@@ -495,21 +511,23 @@ void MergeSortNonR(int* a, int n)
 				{
 					tmp[j++] = a[begin2++];
 				}
-				//处理剩余数据
-				while (begin1 <= end1)
-				{
-					tmp[j++] = a[begin1++];
-				}
-				while (begin2 <= end2)
-				{
-					tmp[j++] = a[begin2++];
-				}
+				
 			}
-			memcpy(a + begin1, tmp + begin1, range * sizeof(int));
+			//处理剩余数据
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
 		}
+		memcpy(a, tmp, n * sizeof(int));
+
 
 		gap *= 2;
-	//}
+	}
 
 	free(tmp);
 }
