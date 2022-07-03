@@ -117,16 +117,47 @@ void SelectSort(int* a, int n)
 	}
 }
 // 堆排序
-void AdjustDwon(int* a, int n, int root);
-void HeapSort(int* a, int n);
-<<<<<<< HEAD
+void AdjustDwon(int* a, int size, int parent)
+{
+	int child = parent * 2 + 1;
+	while (child < size)
+	{
+		if (child + 1 < size && a[child + 1] > a[child])
+		{
+			++child;
+		}
+
+		if (a[child] > a[parent])
+		{
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void HeapSort(int* a, int n)
+{
+	for (int i = (n - 1 - 1) / 2; i >= 0; --i)
+	{
+		AdjustDwon(a, n, i);
+	}
+
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[0], &a[end]);
+		AdjustDwon(a, end, 0);
+		--end;
+	}
+}
+
+
 // 冒泡排序
-=======
-// ð������
-<<<<<<< HEAD
-void BubbleSort(int* a, int n);
-=======
->>>>>>> df48b74e9304fe2e556a418d01c426ee56928e01
 void BubbleSort(int* a, int n)
 {
 	for (int i = 0; i < n; i++)
@@ -145,14 +176,8 @@ void BubbleSort(int* a, int n)
 			break;
 	}
 }
-<<<<<<< HEAD
 // 快速排序递归实现
 // 快速排序hoare版本
-=======
->>>>>>> 22f2a112757dfa3f884d1ee5ffe2df31527cd752
-// ��������ݹ�ʵ��
-// ��������hoare�汾
->>>>>>> df48b74e9304fe2e556a418d01c426ee56928e01
 int PartSort1(int* a, int begin, int end)
 {
 	if (begin >= end)
@@ -386,11 +411,163 @@ void QuickSortNonR(int* a, int begin, int end)
 	StackDestory(&st);
 }
 // 归并排序递归实现
-void MergeSort(int* a, int n);
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
+
+	_MergeSort(a, 0, n - 1, tmp);
+
+	free(tmp);
+}
+
+void _MergeSort(int* a, int begin, int end, int* tmp)
+{
+	if (begin >= end)
+		return;
+
+	int mid = (begin + end) / 2;
+
+	_MergeSort(a, begin, mid, tmp);
+	_MergeSort(a, mid + 1, end, tmp);
+
+	int begin1 = begin, end1 = mid;
+	int begin2 = mid + 1, end2 = end;
+	int i = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+
+	// 把归并数据拷贝回原数组
+	memcpy(a + begin, tmp + begin, (end - begin + 1) * sizeof(int));
+}
+
 // 归并排序非递归实现
-void MergeSortNonR(int* a, int n);
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
+
+	// 休息11：48继续
+	int gap = 1;
+	while (gap < n)
+	{
+		//printf("gap=%d->", gap);
+		for (int i = 0; i < n; i += 2 * gap)
+		{
+			// [i,i+gap-1][i+gap, i+2*gap-1]
+			int begin1 = i, end1 = i + gap - 1;
+			int begin2 = i + gap, end2 = i + 2 * gap - 1;
+
+			// end1越界或者begin2越界，则可以不归并了
+			if (end1 >= n || begin2 >= n)
+			{
+				break;
+			}
+			else if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			//printf("[%d,%d] [%d, %d]--", begin1, end1, begin2, end2);
+
+			int m = end2 - begin1 + 1;
+			int j = begin1;
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] < a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+
+			memcpy(a + i, tmp + i, sizeof(int) * m);
+		}
+
+		gap *= 2;
+	}
+
+	free(tmp);
+}
 // 计数排序
-void CountSort(int* a, int n);
+void CountSort(int* a, int n)
+{
+	int min = a[0], max = a[0];
+	for (int i = 1; i < n; ++i)
+	{
+		if (a[i] < min)
+			min = a[i];
+
+		if (a[i] > max)
+			max = a[i];
+	}
+
+	// 统计次数的数组
+	int range = max - min + 1;
+	int* count = (int*)malloc(sizeof(int) * range);
+	if (count == NULL)
+	{
+		printf("malloc fail\n");
+		exit(-1);
+	}
+	memset(count, 0, sizeof(int) * range);
+
+	// 统计次数
+	for (int i = 0; i < n; ++i)
+	{
+		count[a[i] - min]++;
+	}
+
+	// 回写-排序
+	int j = 0;
+	for (int i = 0; i < range; ++i)
+	{
+		// 出现几次就会回写几个i+min
+		while (count[i]--)
+		{
+			a[j++] = i + min;
+		}
+	}
+}
 //打印
 void ArrayPrint(int* a, int n)
 {
