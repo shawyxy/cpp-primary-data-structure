@@ -27,11 +27,13 @@ void QuickSort2(int* a, int begin, int end);
 // 快速排序前后指针法
 int PartSort3(int* a, int begin, int end);
 void QuickSort3(int* a, int begin, int end);
+
 void QuickSort(int* a, int left, int right);
 // 快速排序 非递归实现
 void QuickSortNonR(int* a, int begin, int end);
 // 归并排序递归实现
 void MergeSort(int* a, int n);
+void _MergeSort(int* a, int begin, int end, int* tmp);
 // 归并排序非递归实现
 void MergeSortNonR(int* a, int n);
 // 计数排序
