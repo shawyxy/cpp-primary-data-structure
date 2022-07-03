@@ -419,7 +419,6 @@ void MergeSort(int* a, int n)
 		printf("malloc fail\n");
 		exit(-1);
 	}
-
 	_MergeSort(a, 0, n - 1, tmp);
 
 	free(tmp);
@@ -431,13 +430,14 @@ void _MergeSort(int* a, int begin, int end, int* tmp)
 		return;
 
 	int mid = (begin + end) / 2;
-
+	//递归子区间，让子区间有序
 	_MergeSort(a, begin, mid, tmp);
 	_MergeSort(a, mid + 1, end, tmp);
-
+	
+	//归并
 	int begin1 = begin, end1 = mid;
 	int begin2 = mid + 1, end2 = end;
-	int i = begin1;
+	int i = begin;
 	while (begin1 <= end1 && begin2 <= end2)
 	{
 		if (a[begin1] < a[begin2])
@@ -447,59 +447,46 @@ void _MergeSort(int* a, int begin, int end, int* tmp)
 		else
 		{
 			tmp[i++] = a[begin2++];
+
 		}
 	}
-
+	//处理剩余数据
 	while (begin1 <= end1)
 	{
 		tmp[i++] = a[begin1++];
 	}
-
 	while (begin2 <= end2)
 	{
 		tmp[i++] = a[begin2++];
 	}
-
-	// 把归并数据拷贝回原数组
+	//将tmp的内容回写
 	memcpy(a + begin, tmp + begin, (end - begin + 1) * sizeof(int));
 }
 
 // 归并排序非递归实现
 void MergeSortNonR(int* a, int n)
 {
-	int* tmp = (int*)malloc(sizeof(int) * n);
+	int* tmp = (int*)malloc(sizeof(int));
 	if (tmp == NULL)
 	{
 		printf("malloc fail\n");
 		exit(-1);
 	}
 
-	// 休息11：48继续
 	int gap = 1;
-	while (gap < n)
-	{
-		//printf("gap=%d->", gap);
-		for (int i = 0; i < n; i += 2 * gap)
+	/*while (gap < n)
+	{*/
+		printf("gap=%d->", gap);
+		for (int i = 0; i < n; i += gap)
 		{
-			// [i,i+gap-1][i+gap, i+2*gap-1]
 			int begin1 = i, end1 = i + gap - 1;
-			int begin2 = i + gap, end2 = i + 2 * gap - 1;
-
-			// end1越界或者begin2越界，则可以不归并了
-			if (end1 >= n || begin2 >= n)
-			{
-				break;
-			}
-			else if (end2 >= n)
-			{
-				end2 = n - 1;
-			}
-			//printf("[%d,%d] [%d, %d]--", begin1, end1, begin2, end2);
-
-			int m = end2 - begin1 + 1;
+			int begin2 = end1 + 1, end2 = end1 + gap;
 			int j = begin1;
+			int range = end2 - begin1 + 1;
+			printf("[%d,%d] [%d, %d]--", begin1, end1, begin2, end2);
 			while (begin1 <= end1 && begin2 <= end2)
 			{
+				//归并
 				if (a[begin1] < a[begin2])
 				{
 					tmp[j++] = a[begin1++];
@@ -508,63 +495,61 @@ void MergeSortNonR(int* a, int n)
 				{
 					tmp[j++] = a[begin2++];
 				}
+				//处理剩余数据
+				while (begin1 <= end1)
+				{
+					tmp[j++] = a[begin1++];
+				}
+				while (begin2 <= end2)
+				{
+					tmp[j++] = a[begin2++];
+				}
 			}
-
-			while (begin1 <= end1)
-			{
-				tmp[j++] = a[begin1++];
-			}
-
-			while (begin2 <= end2)
-			{
-				tmp[j++] = a[begin2++];
-			}
-
-			memcpy(a + i, tmp + i, sizeof(int) * m);
+			memcpy(a + begin1, tmp + begin1, range * sizeof(int));
 		}
 
 		gap *= 2;
-	}
+	//}
 
 	free(tmp);
 }
 // 计数排序
 void CountSort(int* a, int n)
 {
-	int min = a[0], max = a[0];
-	for (int i = 1; i < n; ++i)
+	//求最值，得到范围
+	int max = a[0], min = a[0];
+	for (int i = 1; i < n; i++)
 	{
-		if (a[i] < min)
-			min = a[i];
-
-		if (a[i] > max)
+		if (max < a[i])
 			max = a[i];
-	}
 
-	// 统计次数的数组
+		if (min > a[i])
+			min = a[i];
+	}
 	int range = max - min + 1;
-	int* count = (int*)malloc(sizeof(int) * range);
-	if (count == NULL)
+
+	int* tmp = (int*)malloc(range * sizeof(int));
+	//检查
+	if (tmp == NULL)
 	{
 		printf("malloc fail\n");
 		exit(-1);
 	}
-	memset(count, 0, sizeof(int) * range);
-
-	// 统计次数
-	for (int i = 0; i < n; ++i)
+	//置零
+	memset(tmp, 0, range * sizeof(int));
+	//计数
+	for (int i = 0; i < n; i++)
 	{
-		count[a[i] - min]++;
+		tmp[a[i] - min]++;
 	}
-
-	// 回写-排序
-	int j = 0;
-	for (int i = 0; i < range; ++i)
+	//回写
+	for (int i = 0; i < range; i++)
 	{
-		// 出现几次就会回写几个i+min
-		while (count[i]--)
+		int j = 0;
+		while (tmp[i])
 		{
 			a[j++] = i + min;
+			tmp[i]--;
 		}
 	}
 }
